@@ -2,12 +2,12 @@ package com.dhiraj.productservice.thirdpartyclients.productsservice.fakestore;
 
 import com.dhiraj.productservice.dtos.FakeStoreProductDto;
 import com.dhiraj.productservice.dtos.GenericProductDto;
+import com.dhiraj.productservice.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,4 +39,21 @@ public class FakeStoryProductServiceClient {
         return Arrays.stream(res.getBody()).collect(Collectors.toList());
 //        return List.of(Arrays.stream(res.getBody()).toArray(FakeStoreProductDto[]::new));
     }
+
+    public FakeStoreProductDto getSingleProduct(Long id) throws NotFoundException {
+        ResponseEntity<FakeStoreProductDto> resp = restTemplate.getForEntity(productRequestsBaseUrl + "/" + id, FakeStoreProductDto.class);
+        FakeStoreProductDto fakeStoreProductDto = resp.getBody();
+        if (fakeStoreProductDto == null) {
+            throw new NotFoundException("Product with id: " + id + " doesn't exist.");
+        }
+        return  fakeStoreProductDto;
+    }
+
+//    public GenericProductDto getSingleProduct(Long id) {
+//        ResponseEntity<FakeStoreProductDto> res = restTemplate.getForEntity(productRequestsBaseUrl + "/" + id, FakeStoreProductDto.class);
+//        // Convert the fetched product to a GenericProductDto
+//        FakeStoreProductDto fakeProduct = res.getBody();
+//        return convertToGenericProductDto(fakeProduct);
+//    }
+
 }

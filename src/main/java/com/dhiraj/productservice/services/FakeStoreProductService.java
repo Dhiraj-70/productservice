@@ -2,6 +2,7 @@ package com.dhiraj.productservice.services;
 
 import com.dhiraj.productservice.dtos.FakeStoreProductDto;
 import com.dhiraj.productservice.dtos.GenericProductDto;
+import com.dhiraj.productservice.exceptions.NotFoundException;
 import com.dhiraj.productservice.thirdpartyclients.productsservice.fakestore.FakeStoryProductServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,4 +38,16 @@ public class FakeStoreProductService implements  ProductService{
         }
         return genProductDtos;
     }
+
+    @Override
+    public GenericProductDto getProductById(Long id) throws NotFoundException {
+        return convertFakeStoreProductIntoGenericProduct(fakeStoryProductServiceClient.getSingleProduct(id));
+    }
+
+//    @Override
+//    public GenericProductDto getProductById(Long id) {
+//        GenericProductDto productDto = fakeStoryProductServiceClient.getSingleProduct(id);
+//        return convertFakeStoreProductIntoGenericProduct(productDto);
+//    }
+
 }
