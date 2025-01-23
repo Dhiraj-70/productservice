@@ -10,4 +10,6 @@ public interface ProductService {
     List<GenericProductDto> getAllProducts();
 
     GenericProductDto getProductById(Long id) throws NotFoundException;
+
+    GenericProductDto deleteProduct(Long id);
 }
