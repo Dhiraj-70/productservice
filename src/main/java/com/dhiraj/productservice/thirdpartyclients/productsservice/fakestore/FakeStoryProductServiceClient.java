@@ -38,9 +38,7 @@ public class FakeStoryProductServiceClient {
 
     public List<FakeStoreProductDto> getAllProducts() {
         ResponseEntity<FakeStoreProductDto[]> res = restTemplate.getForEntity(productRequestsBaseUrl, FakeStoreProductDto[].class);
-//        List<FakeStoreProductDto> products = Arrays.asList(res.getBody());
         return Arrays.stream(res.getBody()).collect(Collectors.toList());
-//        return List.of(Arrays.stream(res.getBody()).toArray(FakeStoreProductDto[]::new));
     }
 
     public FakeStoreProductDto getSingleProduct(Long id) throws NotFoundException {
@@ -59,6 +57,14 @@ public class FakeStoryProductServiceClient {
         ResponseEntity<FakeStoreProductDto> response = restTemplate.execute(specificProductRequestUrl, HttpMethod.DELETE,
                 requestCallback, responseExtractor, id);
 
+        return response.getBody();
+    }
+
+    public FakeStoreProductDto createProduct(GenericProductDto product) {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<FakeStoreProductDto> response = restTemplate.postForEntity(
+                productRequestsBaseUrl, product, FakeStoreProductDto.class
+        );
         return response.getBody();
     }
 

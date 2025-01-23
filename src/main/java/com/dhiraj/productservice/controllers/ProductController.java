@@ -42,4 +42,9 @@ public class ProductController {
     public ResponseEntity<GenericProductDto> deleteProductById(@PathVariable Long id) throws NotFoundException {
         return new ResponseEntity<>(productService.deleteProduct(id), HttpStatus.OK);
     }
+
+    @PostMapping
+    public GenericProductDto createProduct(@RequestBody GenericProductDto product) {
+        return productService.createProduct(product);
+    }
 }
