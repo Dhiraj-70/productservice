@@ -68,11 +68,4 @@ public class FakeStoryProductServiceClient {
         return response.getBody();
     }
 
-//    public GenericProductDto getSingleProduct(Long id) {
-//        ResponseEntity<FakeStoreProductDto> res = restTemplate.getForEntity(productRequestsBaseUrl + "/" + id, FakeStoreProductDto.class);
-//        // Convert the fetched product to a GenericProductDto
-//        FakeStoreProductDto fakeProduct = res.getBody();
-//        return convertToGenericProductDto(fakeProduct);
-//    }
-
 }

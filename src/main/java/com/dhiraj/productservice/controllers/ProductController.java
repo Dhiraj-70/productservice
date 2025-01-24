@@ -1,5 +1,6 @@
 package com.dhiraj.productservice.controllers;
 
+import com.dhiraj.productservice.dtos.ErrorDto;
 import com.dhiraj.productservice.dtos.GenericProductDto;
 import com.dhiraj.productservice.exceptions.NotFoundException;
 import com.dhiraj.productservice.services.ProductService;
@@ -47,4 +48,12 @@ public class ProductController {
     public GenericProductDto createProduct(@RequestBody GenericProductDto product) {
         return productService.createProduct(product);
     }
+
+//    @ExceptionHandler(NotFoundException.class)
+//    public ResponseEntity<ErrorDto> handleProductNotFoundException(NotFoundException exception){
+//        ErrorDto errorDto = new ErrorDto();
+//        errorDto.setMessage(exception.getMessage());
+//        return new ResponseEntity<>(errorDto, HttpStatus.NOT_FOUND);
+//    }
+
 }
