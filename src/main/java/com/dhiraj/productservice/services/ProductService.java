@@ -1,17 +1,20 @@
 package com.dhiraj.productservice.services;
 
+import com.dhiraj.productservice.dtos.CreateProductDto;
 import com.dhiraj.productservice.dtos.GenericProductDto;
 import com.dhiraj.productservice.exceptions.NotFoundException;
+import com.dhiraj.productservice.exceptions.ProductNotCreatedException;
+import com.dhiraj.productservice.models.Product;
 
 import java.util.List;
 
 public interface ProductService {
 
-    List<GenericProductDto> getAllProducts();
+    List<Product> getAllProducts();
 
-    GenericProductDto getProductById(Long id) throws NotFoundException;
+    Product getProductById(Long id) throws NotFoundException;
 
-    GenericProductDto deleteProduct(Long id);
+    Product deleteProduct(Long id);
 
-    GenericProductDto createProduct(GenericProductDto product);
+    Product createProduct(CreateProductDto product) throws ProductNotCreatedException;
 }
