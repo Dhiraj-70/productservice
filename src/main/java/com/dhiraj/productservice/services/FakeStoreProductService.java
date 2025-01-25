@@ -21,17 +21,6 @@ public class FakeStoreProductService implements  ProductService{
         this.fakeStoreProductServiceClient = fakeStoreProductServiceClient;
     }
 
-//    private GenericProductDto convertFakeStoreProductIntoGenericProduct(FakeStoreProductDto fakeStoreProductDto) {
-//        GenericProductDto product = new GenericProductDto();
-//        product.setId(fakeStoreProductDto.getId());
-//        product.setImage(fakeStoreProductDto.getImage());
-//        product.setDescription(fakeStoreProductDto.getDescription());
-//        product.setTitle(fakeStoreProductDto.getTitle());
-//        product.setPrice(fakeStoreProductDto.getPrice());
-//        product.setCategory(fakeStoreProductDto.getCategory());
-//        return product;
-//    }
-
     @Override
     public List<Product> getAllProducts() {
         List<Product> allProduct = new ArrayList<>();

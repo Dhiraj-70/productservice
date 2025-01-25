@@ -1,7 +1,6 @@
 package com.dhiraj.productservice.services;
 
 import com.dhiraj.productservice.dtos.CreateProductDto;
-import com.dhiraj.productservice.dtos.GenericProductDto;
 import com.dhiraj.productservice.exceptions.NotFoundException;
 import com.dhiraj.productservice.exceptions.ProductNotCreatedException;
 import com.dhiraj.productservice.models.Product;

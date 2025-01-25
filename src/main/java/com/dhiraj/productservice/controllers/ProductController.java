@@ -1,18 +1,14 @@
 package com.dhiraj.productservice.controllers;
 
 import com.dhiraj.productservice.dtos.CreateProductDto;
-import com.dhiraj.productservice.dtos.ErrorDto;
 import com.dhiraj.productservice.exceptions.NotFoundException;
 import com.dhiraj.productservice.exceptions.ProductNotCreatedException;
 import com.dhiraj.productservice.models.Product;
 import com.dhiraj.productservice.services.ProductService;
-import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
